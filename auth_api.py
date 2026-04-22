@@ -60,8 +60,15 @@ def authenticate_user(username: str, password: str) -> dict:
     
     if user:
         return {"success": True, "name": user[0], "username": user[1]}
-    else:
-        return {"success": False, "error": "Invalid username or password"}
+    
+    # Fallback to Admin Secrets defined in Streamlit Cloud / .env
+    host_user = os.getenv("HOST_USERNAME")
+    host_pass = os.getenv("HOST_PASSWORD")
+    if host_user and host_pass:
+        if username == host_user and password == host_pass:
+            return {"success": True, "name": "Administrator", "username": host_user}
+            
+    return {"success": False, "error": "Invalid username or password"}
 
 def authenticate_oauth(provider: str, email: str, name: str) -> dict:
     """Simulates OAuth authentication. Seamlessly registers them if they don't exist."""
