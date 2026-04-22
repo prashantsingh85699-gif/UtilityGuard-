@@ -1,15 +1,17 @@
-# UtilityGuard 🌊
+# Hydrologic 🌊
 ### Autonomous Multi-Agent Multi-Zone Water Utility Pipeline
 
-**UtilityGuard** is an end-to-end "Agentic Workflow" designed to completely automate the monitoring, classification, and mitigation of critical IoT infrastructure events (like pipe leaks and localized water shortages). 
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-Hydrologic_Platform-00BCD4?style=for-the-badge&logo=streamlit&logoColor=white)](https://hydrologic-dashboard.streamlit.app)
 
-Instead of acting as a simple chatbot, UtilityGuard deploys a collaborative **Multi-Agent System** that executes the three core pillars of autonomous engineering: **Perception, Reasoning, and Action**.
+**Hydrologic** is an end-to-end "Agentic Workflow" designed to completely automate the monitoring, classification, and mitigation of critical IoT infrastructure events (like pipe leaks and localized water shortages). 
+
+Instead of acting as a simple chatbot, Hydrologic deploys a collaborative **Multi-Agent System** that executes the three core pillars of autonomous engineering: **Perception, Reasoning, and Action**.
 
 ---
 
 ## 🚀 The AI Architecture
 
-UtilityGuard removes the human-in-the-loop for time-critical infrastructure emergencies utilizing 5 specialized agents:
+Hydrologic removes the human-in-the-loop for time-critical infrastructure emergencies utilizing 5 specialized agents:
 
 1. **👀 PerceptionAgent**: Monitors IoT sensors across 5 distinct geographic zones. It identifies statistical baseline deviations (e.g., pressure dropping, flow surging) long before a human operator would notice. 
 2. **🧠 ReasoningAgent (Mistral LLM)**: The "brain" of the operation. It receives the sensor deviations and uses advanced LLM logic to classify whether the anomaly is a harmless fluctuation, a **LEAK**, or a **SHORTAGE**.
