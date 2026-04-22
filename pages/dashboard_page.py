@@ -251,7 +251,7 @@ st.markdown("""
     .zone-card {
         background: var(--bg-card);
         border-radius: var(--radius);
-        padding: 1.1rem;
+        padding: 0.8rem 0.6rem;
         border: 1.5px solid var(--border);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin-bottom: 0.5rem;
