@@ -1,7 +1,7 @@
 # Hydrologic 🌊
 ### Autonomous Multi-Agent Multi-Zone Water Utility Pipeline
 
-[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-Hydrologic_Platform-00BCD4?style=for-the-badge&logo=streamlit&logoColor=white)](https://hydrologic-dashboard.streamlit.app)
+Live Url: https://utilityguard.streamlit.app/
 
 **Hydrologic** is an end-to-end "Agentic Workflow" designed to completely automate the monitoring, classification, and mitigation of critical IoT infrastructure events (like pipe leaks and localized water shortages). 
 
