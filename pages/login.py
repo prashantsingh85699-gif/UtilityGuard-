@@ -298,37 +298,26 @@ def mock_oauth_dialog(provider: str):
 # Main Application logic
 tab1, tab2 = st.tabs(["🔒 Sign In", "📝 Register"])
 
-# Define callbacks completely outside the execution flow for stable state syncing
-def handle_login():
-    usr = st.session_state.get('login_usr', '')
-    pwd = st.session_state.get('login_pwd', '')
-    result = authenticate_user(usr, pwd)
-    if result['success']:
-        st.session_state.username = result['username']
-        st.session_state.user_name = result['name']
-        st.session_state.logged_in = True
-        st.session_state.explicit_session_logout = False
-        st.session_state.login_error = None
-    else:
-        st.session_state.login_error = result['error']
-
 with tab1:
-    with st.form("login_form", border=False):
-        st.markdown(brand_html, unsafe_allow_html=True)
-        
-        # We must use unique keys corresponding to the callback fields
-        username = st.text_input("Username", placeholder="👤 Username", key="login_usr")
-        password = st.text_input("Password", type="password", placeholder="🔒 Password", key="login_pwd")
-        
-        st.markdown('<div class="forgot-link"><a href="#">Forgot password?</a></div>', unsafe_allow_html=True)
-        
-        # Submitting the form triggers the callback BEFORE any page navigation logic
-        submitted = st.form_submit_button("Sign In →", on_click=handle_login)
-
-    # Render errors if the callback failed and we remain on the login page
-    if st.session_state.get("login_error"):
-        st.error(st.session_state.login_error)
-        st.session_state.login_error = None
+    st.markdown(brand_html, unsafe_allow_html=True)
+    
+    # Standard inputs ensure real-time websocket synchronization
+    username = st.text_input("Username", placeholder="👤 Username", key="login_usr")
+    password = st.text_input("Password", type="password", placeholder="🔒 Password", key="login_pwd")
+    
+    st.markdown('<div class="forgot-link"><a href="#">Forgot password?</a></div>', unsafe_allow_html=True)
+    
+    # Using a native button instead of a form submit ensures precise execution timing
+    if st.button("Sign In →", use_container_width=True, key="login_btn"):
+        result = authenticate_user(username, password)
+        if result['success']:
+            st.session_state.username = result['username']
+            st.session_state.user_name = result['name']
+            st.session_state.logged_in = True
+            st.session_state.explicit_session_logout = False
+            st.rerun()
+        else:
+            st.error(result['error'])
 
     # Divider & Social
     st.markdown("""
