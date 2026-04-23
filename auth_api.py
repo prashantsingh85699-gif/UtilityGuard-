@@ -1,7 +1,9 @@
 import sqlite3
 import hashlib
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "utilityguard.db")
 
 def init_db():

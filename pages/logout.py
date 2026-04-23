@@ -1,8 +1,5 @@
 import streamlit as st
 import time
-from streamlit_cookies_controller import CookieController
-
-controller = CookieController(key="hydrologic_auth")
 
 st.markdown("""
 <style>
@@ -80,10 +77,9 @@ with st.form("logout_form", clear_on_submit=False):
     submitted = st.form_submit_button("Confirm Logout")
     
     if submitted:
-        # Clear the JS cookie physically
-        controller.remove("auth_status")
         # Reset Session State flags
         st.session_state.logged_in = False
+        st.session_state.explicit_session_logout = True
         st.session_state.username = None
         st.session_state.user_name = "Host"
         

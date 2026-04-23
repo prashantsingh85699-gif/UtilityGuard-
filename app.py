@@ -11,9 +11,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Initialize Cookie Controller with a UNIFIED key for all pages
-controller = CookieController(key="hydrologic_auth")
-
 # Provide a small invisible state to keep track
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -21,15 +18,6 @@ if "username" not in st.session_state:
     st.session_state.username = None
 if "user_name" not in st.session_state:
     st.session_state.user_name = "Host"
-
-# Fetch cookie state
-auth_cookie = controller.get("auth_status")
-
-if auth_cookie == "logged_in":
-    st.session_state.logged_in = True
-else:
-    # If cookie is missing or 'logged_out', we treat as logged out
-    st.session_state.logged_in = False
 # Define application routes
 if st.session_state.logged_in:
     home = st.Page("pages/home.py", title="Home Profile", icon=":material/home:")
